@@ -5,6 +5,7 @@ import News from "./components/News/News";
 import Newsletter from "./components/Newsletter/Newsletter";
 import Testimonials from "./components/Testimonials/Testimonials";
 import { getTestimonials } from "./lib/dal";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 
 export default async function Home() {
@@ -17,6 +18,7 @@ export default async function Home() {
       <News/>
       <Newsletter/>
       <Testimonials testimonials={testimonials}/>
+      <ContactForm/>
       </main>
   );
 }
