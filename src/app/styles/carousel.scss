@@ -1,0 +1,39 @@
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-block: 2rem;
+}
+
+.embla__slide p{
+  text-align: center;
+  margin-inline: 2rem;
+}
+
+// .embla__button{
+//   border: solid 1px colors.$white-color;
+//   padding: 1rem;
+//   border-radius: 50%;
+//   background-color: colors.$secondary-background-color;
+// }
+
+.embla__container-title{
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.embla__button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
