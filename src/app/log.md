@@ -82,8 +82,69 @@ Så hvis man ikke skriver de ting som en email kræver, "@" eller gmail.com, så
 
 ## Dag 2
 
-Morgen - (tidspunkt)  
-Eftermiddag - (tidspunkt)
+I dag har jeg indtil videre arbejdet på login/logud formularer, profil siden og liste/detalje visning. 
+
+
+```
+export default function Footer() {
+    const pathname = usePathname()
+    if (pathname === "/") return <HomeFooter/>
+
+    return (
+        <>
+
+        </>
+    )
+}
+```
+Footeren viser også kun komponentet "HomeFooter" hvis den er på landingpagen, ellers viser den ikke noget. 
+
+Man kan tilmelde/framelde sig selv fra et hold og det vil være forskelligt for hver bruger. 
+
+## Login/Logud form
+
+Når man klikker på login linket på landing pagen, så bliver man sendt til login siden, hvor man indtaster sit brugernavn og så kodeord. Den er valideret og når man logger ud bliver cookien slettet.
+
+*I figma filen står der man skal bruge email, men api'et siger brugernavn*
+
+## Tilmeld/Frameld
+
+```
+    const handleLeave = async () => {
+        await fetch(`http://localhost:4000/api/v1/users/${userId}/classes/${classData.id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        router.refresh()
+    }
+    const handleJoin = async () => {
+        await fetch(`http://localhost:4000/api/v1/users/${userId}/classes/${classData.id}`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        router.refresh()
+    }
+            {isUserEnrolled ? (
+                <button className="activity__button " onClick={handleLeave}>
+                    Leave
+                </button>
+            ) : (
+                <button className="activity__button " onClick={handleJoin}>
+                    Sign up
+                </button>
+            )}
+```
+
+handleLeave/handleJoin functionerne fetcher brugerne og deres classes. Den ene er en post method og den anden er en delete. De skal bruge auth token til at få adgang til dem. 
+
+isUserEnrolled functionen gøre at hvis man er tilmeldt, vil der stå "leave" ellers står der sign up
+
+Jeg tilføjede også en carousel til listevisningen `der er lidt problemer med den, men det fikser jeg nok i morgen`
+
 
 ## Dag 3
 
