@@ -1,49 +1,52 @@
 
 "use client"
 import { useRouter } from "next/navigation"
-export default function ClassCard({ classData, isUserEnrolled, userId, token}) {
+export default function ClassCard({ classData, isUserEnrolled, userId, token }) {
 
     const router = useRouter()
-    
+
     const handleLeave = async () => {
-            await fetch(`http://localhost:4000/api/v1/users/${userId}/classes/${classData.id}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            router.refresh()
-        }
-        const handleJoin = async () => {
-            await fetch(`http://localhost:4000/api/v1/users/${userId}/classes/${classData.id}`, {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-            router.refresh()
-        }
+        await fetch(`http://localhost:4000/api/v1/users/${userId}/classes/${classData.id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        router.refresh()
+    }
+    const handleJoin = async () => {
+        await fetch(`http://localhost:4000/api/v1/users/${userId}/classes/${classData.id}`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        router.refresh()
+    }
 
     return (
-          <article>
-                <figure className="activity__image-figure full-width activity__figure-wrap">
+        <article>
+            <figure className="classCard__image-figure full-width classCard__figure-wrap">
                 <img src={classData.asset.url} alt={classData.name} />
-                </figure>
-                 <h1>
-                    {classData.className}
-                </h1>
-                {isUserEnrolled ? (
-                    <button className="activity__button activity__overlay-btn" onClick={handleLeave}>
-                        Leave
-                    </button>
-                ) : (
-                    <button className="activity__button activity__overlay-btn" onClick={handleJoin}>
-                        Sign up
-                    </button>
-                )}
-                {/*
-                <p>{activity.minAge}+ år</p>
-                <div dangerouslySetInnerHTML={{ __html: activity.description }}></div> */}
-            </article>
+            <h1 className="classCard__overlay-title">
+                {classData.className}
+            </h1>
+            </figure>
+            <p>{classData.classDay} {classData.classTime}</p>
+            <p>{classData.classDescription}</p>
+            <h3>Trainer Name</h3>
+            <h3>
+                {classData.trainer.trainerName}
+            </h3>
+            {isUserEnrolled ? (
+                <button className="activity__button " onClick={handleLeave}>
+                    Leave
+                </button>
+            ) : (
+                <button className="activity__button " onClick={handleJoin}>
+                    Sign up
+                </button>
+            )}
+        </article>
     )
 }

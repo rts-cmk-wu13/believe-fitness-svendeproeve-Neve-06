@@ -1,4 +1,4 @@
-import { getClassById } from "../../lib/dal";
+import { getClassById, getTrainersById } from "../../lib/dal";
 import { notFound } from "next/navigation";
 import { cookies } from "next/headers";
 import ClassCard from "@/app/components/ClassCard/ClassCard";
@@ -6,6 +6,7 @@ export default async function ActivityDetailPage({ params }) {
 
     const { id } = await params;
     const classData = await getClassById(id);
+    const trainerData = await getTrainersById(id);
     const cookieStore = await cookies()
     console.log(classData);
     const userId = cookieStore.get('userId').value
