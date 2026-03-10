@@ -23,10 +23,10 @@ export default function ClassCarousel({ classes = [] }) {
 
                         {classes.map((classData) => (
                             <Link className="embla__slide" href={`/classes/${classData.id}`}>
-                            <article >
+                            <article key={classData.id} >
                                 <p>{classData.className}</p>
                                 <figure>
-                                    <img  key={classData.id} loading="lazy" src={classData.asset.url} alt={classData.className}></img>
+                                    <img loading="lazy" src={classData.asset.url} alt={classData.className}></img>
                                 </figure>
                             </article>
                             </Link>
