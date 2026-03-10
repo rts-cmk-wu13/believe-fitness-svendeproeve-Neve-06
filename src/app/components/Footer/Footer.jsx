@@ -14,13 +14,11 @@ export default function Footer() {
 export function HomeFooter() {
 
     return (
-        <>
         <footer>
             <h2>Believe Fitness</h2>
             <h3>Train like a pro</h3>
             <p>Rabalderstræde 48 ‧ 4000 Roskilde</p>
             <p>hello@believe-fitness.com</p>
         </footer>
-        </>
     )
 }
