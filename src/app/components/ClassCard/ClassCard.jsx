@@ -34,11 +34,11 @@ export default function ClassCard({ classData, isUserEnrolled, userId, token}) {
                 </h1>
                 {isUserEnrolled ? (
                     <button className="activity__button activity__overlay-btn" onClick={handleLeave}>
-                        Forlad
+                        Leave
                     </button>
                 ) : (
                     <button className="activity__button activity__overlay-btn" onClick={handleJoin}>
-                        Tilmeld
+                        Sign up
                     </button>
                 )}
                 {/*
