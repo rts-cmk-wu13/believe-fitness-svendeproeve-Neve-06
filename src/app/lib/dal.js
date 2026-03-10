@@ -10,15 +10,6 @@ export async function getNews(){
     return await response.json()
 }
 
-export async function getAssets(){
-    const response = await fetch(`http://localhost:4000/api/v1/assets`)
-    
-            if (!response.ok) {
-            throw new Error({ message: "something went wrong" })
-        }
-        return await response.json()
-}
-
 export async function newsletter(){
     const response = await fetch(`http://localhost:4000/api/v1/newsletter/`, {
         method: "POST",
@@ -39,4 +30,46 @@ export async function getTestimonials(){
         throw new Error({ message: "something went wrong" })
     }
     return await response.json()
+}
+
+export async function getUsersById(userId) {
+    
+    const cookieStore = await cookies()
+    const authToken = cookieStore.get("authToken")
+    const response = await fetch(`http://localhost:4000/api/v1/users/${userId}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${authToken.value}`
+            },
+            cache: "no-store"
+        }
+    )
+    console.log(response);
+    
+    if (!response.ok) {
+        throw new Error({ message: "something went wrong" })
+    }
+    return await response.json()
+}
+
+export async function getAllClasses(){
+    const response = await fetch(`http://localhost:4000/api/v1/classes/`)
+    
+    if (!response.ok) {
+        throw new Error({ message: "something went wrong" })
+    }
+    return await response.json()
+    
+    
+}
+export async function getClassById(id) {
+    const response = await fetch(`http://localhost:4000/api/v1/classes/${id}`)
+    
+    if (!response.ok) {
+        throw new Error({ message: "something went wrong" })
+    }
+    return await response.json()
+    
 }
