@@ -1,0 +1,54 @@
+"use server"
+import { redirect } from "next/navigation"
+import { z } from "zod"
+import { cookies } from "next/headers"
+import { loginSchema } from "../../lib/schemas"
+
+
+export async function loginUser(prevState, formData) {
+
+    const cookieStore = await cookies()
+    const username = formData.get("username")
+    const password = formData.get("password")
+    console.log(username, password);
+
+    if (username === prevState.values.username && password === prevState.values.password) {
+        return prevState // no changes
+    }
+
+
+    const result = loginSchema.safeParse({ username, password })
+
+    if (!result.success) {
+        console.log(z.flattenError(result.error).fieldErrors);
+
+        return {
+            values: { username, password },
+            errors: z.flattenError(result.error).fieldErrors
+        }
+
+    }
+    const response = await fetch("http://localhost:4000/auth/token", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password })
+    })
+
+    if(!response.ok){
+        return {
+            values: { username, password },
+            errors: { form: ["Login failed. Please check your credentials and try again."] }
+        }
+    }
+
+    const data = await response.json()
+    console.log(data);
+
+    cookieStore.set("authToken", data.token)
+    cookieStore.set("userId", data.userId)
+    cookieStore.set("role", data.role)
+    
+    return redirect("/profile")
+}
