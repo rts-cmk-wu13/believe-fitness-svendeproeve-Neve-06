@@ -2,20 +2,14 @@ export default function ContactForm() {
 
     return (
         <>
-        <form className="columns">
-            <div>
+        <form>
                 <label htmlFor="name">Navn</label>
-                <input type="text" id="name" placeholder="Enter your name" />
-            </div>
-            <div>
+                <input className="login__input" type="text" id="name" placeholder="Enter your name" />
                 <label htmlFor="name">Email</label>
-                <input type="email" id="email" placeholder="Enter your Email" />
-            </div>
-            <div>
+                <input className="login__input" type="email" id="email" placeholder="Enter your Email" />
                 <label htmlFor="message">Besked</label>
                 <textarea name="message" id="message"></textarea>
-            </div>
-            <button type="submit"></button>
+            <button className="login__button" type="submit">Send Message</button>
         </form>
         </>
     )
