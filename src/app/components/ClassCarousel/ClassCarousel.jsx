@@ -6,11 +6,13 @@ import Image from "next/image"
 import Autoplay from "embla-carousel-autoplay"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 export default function ClassCarousel({ classes = [] }) {
     const [emblaRef] = useEmblaCarousel()
-
+    const pathname = usePathname()
     const [randomClass, setRandomClass] = useState(null)
+    
 
     useEffect(() => {
         if (classes.length > 0) {
@@ -22,13 +24,15 @@ export default function ClassCarousel({ classes = [] }) {
     if (!randomClass) {
         return <p>Loading...</p>
     }
+
+    pathname === "/search" 
     return (
         <>
             <section className="BigImage">
                 <Link href={`/classes/${randomClass.id}`}>
-                    <figure className="embla__image-container">
+                    <figure className="big__image-container">
                         <img loading="lazy" src={randomClass.asset.url} alt={randomClass.className}></img>
-                        <div className="embla__image-description">
+                        <div className="class__image-description">
                             <h2 id={"classes" + randomClass.id}>{randomClass.className}</h2>
                         </div>
                     </figure>               
@@ -41,11 +45,11 @@ export default function ClassCarousel({ classes = [] }) {
                     <div className="embla__container">
 
                         {classes.map((classData) => (
-                            <Link key={classData.id} className="embla__slide" href={`/classes/${classData.id}`}>
+                            <Link key={classData.id} className="class__slide" href={`/classes/${classData.id}`}>
                                 <article  >
-                                    <figure className="embla__image-container">
+                                    <figure className="class__image-container">
                                         <img loading="lazy" src={classData.asset.url} alt={classData.className}></img>
-                                        <div className="embla__image-description">
+                                        <div className="class__image-description">
                                             <h2 id={"classes" + classData.id}>{classData.className}</h2>
                                         </div>
                                     </figure>
