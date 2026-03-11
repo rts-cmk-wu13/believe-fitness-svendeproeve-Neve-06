@@ -39,11 +39,11 @@ export default function ClassCard({ classData, isUserEnrolled, userId, token }) 
                 {classData.trainer.trainerName}
             </h3>
             {isUserEnrolled ? (
-                <button className="activity__button " onClick={handleLeave}>
+                <button className="login__button " onClick={handleLeave}>
                     Leave
                 </button>
             ) : (
-                <button className="activity__button " onClick={handleJoin}>
+                <button className="login__button " onClick={handleJoin}>
                     Sign up
                 </button>
             )}
