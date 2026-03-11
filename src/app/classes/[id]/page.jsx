@@ -6,7 +6,6 @@ export default async function ActivityDetailPage({ params }) {
 
     const { id } = await params;
     const classData = await getClassById(id);
-    const trainerData = await getTrainersById(id);
     const cookieStore = await cookies()
     console.log(classData);
     const userId = cookieStore.get('userId').value
