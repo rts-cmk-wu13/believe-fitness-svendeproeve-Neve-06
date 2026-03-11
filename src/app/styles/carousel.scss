@@ -8,6 +8,11 @@
 }
 
 .embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-block: 2rem;
+}
+.class__slide {
   flex: 0 0 50%;
   min-width: 0;
   padding-block: 2rem;
@@ -38,7 +43,7 @@
   gap: 0.5rem;
 }
 
-.embla__image-description {
+.class__image-description {
   position: absolute;
   bottom: 0;
   padding-top: 2rem;
@@ -48,8 +53,14 @@
   padding-bottom: 1rem;
 }
 
-.embla__image-container {
-  height: 15rem;
+.class__image-container {
+  height: 10rem;
+  position: relative;
+  font-size: 4px;
+}
+
+.big__image-container {
+  height: 20rem;
   position: relative;
   font-size: 4px;
 }
