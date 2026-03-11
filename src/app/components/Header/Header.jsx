@@ -8,7 +8,7 @@ export default async function Header() {
     return (
         <header className="nav__button">
             <div >
-
+        
             <button command="show-modal" commandfor="my-dialog"><HiMenuAlt3 /></button>
             </div>
 
