@@ -148,8 +148,42 @@ Jeg tilføjede også en carousel til listevisningen `der er lidt problemer med d
 
 ## Dag 3
 
-Morgen - (tidspunkt)  
-Eftermiddag - (tidspunkt)
+Jeg har tilføjet et stort billede på listevisningen, som skal vise en tilfældig class.  
+
+Jeg har også lige lavet et "header" komponent, som fungere som en dialog. Når man klikker på knappen, kommer dialog knappen frem, som er din navigation. 
+
+```
+ <button command="show-modal" commandfor="my-dialog">+</button>
+
+            <div  >
+
+            <dialog className="dialog__container" id="my-dialog">
+                <nav>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/classes">Classes</a></li>
+                        <li><a href="/profile">Profile</a></li>
+                        <li><LogoutButton/></li>
+                    </ul>
+                </nav>
+                <button commandfor="my-dialog" command="close">Close</button>
+            </dialog>
+            </div>
+```
+
+Jeg fandt ud af det ved at kigge på [MDN ](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog)
+
+## ClassCarousel 
+
+Der bliver brugt 3 forskellige carouseler i app'en. Det her er den anden jeg har lavet, som er på listevisningen. Den bruger også embla carousel. 
+
+
+Jeg har også lavet meget styling i dag, så siderne ser lidt bedre ud. 
+
+## Instructor opstart
+
+Jeg har lavet et komponent der viser ting kun instructøren kan se, hvis man er logget ind som dem. 
+Jeg vil arbejde på den hele dagen i morgen. 
 
 ## Dag 4
 
