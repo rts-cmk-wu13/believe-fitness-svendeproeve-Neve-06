@@ -2,14 +2,11 @@ import LoginForm from "../components/LoginForm/LoginForm"
 import { getUsersById } from "../lib/dal"
 import { cookies } from "next/headers"
 import Link from "next/link"
-import LogoutButton from "../components/LogoutForm/LogoutButton"
-
 export default async function page() {
     const cookieStore = await cookies()
     const userId = cookieStore.get("userId")
     const user = await getUsersById(userId.value)
     console.log(user);
-
 
     return (
         <>
@@ -21,7 +18,6 @@ export default async function page() {
                     <h1 className="no-columns logo">Velkommen</h1>
                     <p className="no-columns logo">{user.userFirstName} {user.userLastName}</p>
                     <p className="no-columns logo">{user.role === "admin" ? "instructor" : "member"}</p>
-                    <LogoutButton />
                 </section>
                 <section className="profile__activities columns">
                     <h2>Tilmeldte hold</h2>
