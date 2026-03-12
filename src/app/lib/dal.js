@@ -32,10 +32,11 @@ export async function getTestimonials(){
     return await response.json()
 }
 
-export async function getUsersById(userId) {
+export async function getUsersById() {
     
     const cookieStore = await cookies()
     const authToken = cookieStore.get("authToken")
+    const userId = cookieStore.get("userId").value
     const response = await fetch(`http://localhost:4000/api/v1/users/${userId}`,
         {
             method: "GET",
@@ -81,5 +82,24 @@ export async function getTrainersById(id){
         throw new Error({ message: "something went wrong" })
     }
     return await response.json()
+
+}
+
+export async function createClass(prevState, formData) {
+    const cookieStore = await cookies()
+    const authToken = cookieStore.get("authToken")
+
+    const response = await fetch(`http://localhost:4000/api/v1/classes/`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${authToken.value}`
+        },
+        body: formData
+})
+    if (!response.ok) {
+        throw new Error({ message: "something went wrong" })
+    }
+    return await response.json()
+
 
 }
