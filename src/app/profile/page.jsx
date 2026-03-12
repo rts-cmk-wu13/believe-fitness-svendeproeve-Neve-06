@@ -1,4 +1,3 @@
-import LoginForm from "../components/LoginForm/LoginForm"
 import { getUsersById } from "../lib/dal"
 import { cookies } from "next/headers"
 import InstructorClasses from "../components/InstructorClasses/InstructorClasses"

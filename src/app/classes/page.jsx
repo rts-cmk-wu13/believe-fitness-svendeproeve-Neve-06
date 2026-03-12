@@ -1,8 +1,10 @@
-import ClassCarousel from "../components/ClassCarousel/ClassCarousel"
-import { getAllClasses } from "../lib/dal"
+import ClassCarousel from "@/app/components/ClassCarousel/ClassCarousel"
+import { getAllClasses } from "@/app/lib/dal"
 export default async function page() {
 
     const classes = await getAllClasses()
+    console.log(classes);
+    
     return (
         <>
         <main>

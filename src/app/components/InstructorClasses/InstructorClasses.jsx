@@ -3,21 +3,21 @@ import Link from "next/link"
 
 export default async function InstructorClasses({userId}) {
 
-    const activities = await getAllClasses()
-    const InstructorActivities = activities.filter(activity => activity.instructorId === userId)
-    console.log("instruktørens hold", InstructorActivities);
+    const classes = await getAllClasses()
+    const InstructorClasses = classes.filter(classData => classData.trainerId === userId)
+    console.log( InstructorClasses);
     
     return (
         <>
         <h1>Mine hold</h1>
-        <Link href={"/opret-hold"}>+</Link>
+        <Link href={"/create-class"}>+</Link>
         <ul>
-            {InstructorActivities.map(activity => (
-                <li key={activity.id}>
-                    <h2>{activity.name}</h2>
-                    <p>{activity.weekday} {activity.time}</p>
-                    <p>Max. deltagere: {activity.maxParticipants} Tilmeldte: {activity.users.length}</p>
-                    <Link href={`/profile/hold/${activity.id}`}>Vis Deltagere</Link>
+            {InstructorClasses.map(classData => (
+                <li key={classData.id}>
+                    <h2>{classData.className}</h2>
+                    <p>{classData.classDay} {classData.classTime}</p>
+                    <p>Max. deltagere: {classData.maxParticipants} Tilmeldte: {classData.users.length}</p>
+                    <Link href={`/profile/hold/${classData.id}`}>Vis Deltagere</Link>
                 </li>
             ))}
         </ul>
