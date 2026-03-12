@@ -187,8 +187,12 @@ Jeg vil arbejde på den hele dagen i morgen.
 
 ## Dag 4
 
-Morgen - (tidspunkt)  
-Eftermiddag - (tidspunkt)
+
+I dag har jeg kæmpet hele dagen med at lave create class siderne. Det sidste resultat blev at jeg kan godt poste nye classes, men det alt sammen retunere "null".
+
+Mens alt det her blev lavet, stoppede min classes "listevisning" bare med at fungere. 
+
+Der var ellers ikke så meget i dag der blev gennemført. 
 
 ## Dag 5
 
