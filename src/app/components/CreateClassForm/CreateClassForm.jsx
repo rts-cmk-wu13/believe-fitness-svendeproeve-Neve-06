@@ -1,16 +1,20 @@
 "use client"
 import { useActionState } from "react"
-import { createClass } from "../../lib/dal"
+import { createClass  } from "../../lib/dal"
 
 const initialState = {
-    name: null,
-    description: null,
+    className: null,
+    classDescription: null,
     classDay: null,
     classTime: null,
-    trainer: null,
+    trainer: {
+        id: null,
+        trainerName: null
+    },
     maxParticipants: null,
+    asset: null
 }
-export default function CreateClassForm({userId, userFirstName, userLastName}) {
+export default function CreateClassForm({userId, trainers}) {
     const [state, formAction, isPending] = useActionState(createClass, initialState)
 
     return (
@@ -18,14 +22,14 @@ export default function CreateClassForm({userId, userFirstName, userLastName}) {
         <h1>
             Create a Class
         </h1>
-        <form action={formAction} encType="multipart/form-data">
+        <form action={formAction} enctype="multipart/form-data">
                 <label htmlFor="name"></label>
-                <input className="login__input" type="text" id="className" name="classNname" placeholder="Class Name" />
+                <input className="login__input" type="text" id="className" name="className" placeholder="Class Name" />
                 <label htmlFor="description"></label>
                 <textarea className="login__input" id="classDescription" name="classDescription" placeholder="Class Description" />
             <div>
                 <label htmlFor="classDay"></label>
-                <select selected className="login__input"  name="classday" id="">
+                <select selected className="login__input"  name="classDay" id="classDay">
                     <option defaultValue="" disabled={false}>Class Day</option>
                     <option value="monday">Monday</option>
                     <option value="tuesday">Tuesday</option>
@@ -38,13 +42,20 @@ export default function CreateClassForm({userId, userFirstName, userLastName}) {
                 <label htmlFor="classTime"></label>
                 <input className="login__input" type="text" name="classTime" id="classTime" placeholder="Class Time" />
             </div>
-                <label htmlFor="trainer"></label>
-                <input className="login__input" type="text" name="admin" id="admin" readOnly value={`${userFirstName} ${userLastName}`} placeholder="Class Trainer" />
+                    <label htmlFor="trainer"></label>
+                    <select name="trainerId" id="trainer" className="login__input" >
+                        <option value="">Select trainer</option>
+                        {trainers.map((trainer) => (
+                            <option key={trainer.id} value={trainer.id}>
+                                {trainer.trainerName}
+                            </option>
+                        ))}
+                    </select>
                 <label htmlFor="maxParticpants"></label>
                 <input className="login__input" type="text" name="maxParticipants" id="maxParticpants" placeholder="Max Participants In Class" />
             <div>
-                <label htmlFor="asset">Choose an image</label>
-                <input type="file" id="file" accept="image/png, image/jpeg, image/jpg" />
+                <label htmlFor="file">Choose an image</label>
+                <input type="file" id="file" name="file" accept="image/png, image/jpeg" />
             </div>
             <input type="hidden" name="instructorId" value={userId}/>
 

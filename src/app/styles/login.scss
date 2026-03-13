@@ -1,4 +1,4 @@
-
+@use "./colors";
 
 .login__input{
     border-radius: 2rem;
@@ -9,8 +9,8 @@
 
 .login__button{
     border-radius: 0.25rem;
-    background-color: yellow;
-    color: black;
+    background-color: colors.$yellow-color;
+    color: colors.$black-color;
     border: none;
     padding: 0.75rem;
     text-align: center;

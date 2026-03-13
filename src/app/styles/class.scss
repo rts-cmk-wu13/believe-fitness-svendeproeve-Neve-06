@@ -1,4 +1,4 @@
-
+@use "./colors";
 
 @media (max-width: 64rem){
     .classCard__image-figure.full-width {
@@ -16,6 +16,6 @@
   right:30%;
   bottom: 1rem;
   left: 1rem;
-  color: yellow;
+  color: colors.$yellow-color;
   z-index: 2;
 }

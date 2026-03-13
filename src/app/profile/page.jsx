@@ -4,7 +4,7 @@ import InstructorClasses from "../components/InstructorClasses/InstructorClasses
 import Link from "next/link"
 export default async function page() {
     const cookieStore = await cookies()
-    const userId = cookieStore.get("userId")
+    const userId = cookieStore.get("userId")    
     const user = await getUsersById(userId.value)
     console.log(user);
 

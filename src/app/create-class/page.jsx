@@ -1,15 +1,14 @@
 import { cookies } from "next/headers"
 import Link from "next/link"
 import CreateClassForm from "../components/CreateClassForm/CreateClassForm"
-import { getUsersById } from "../lib/dal"
+import { getAllTrainers  } from "../lib/dal"
 
 export default async function page() {
-
+    
     const cookieStore = await cookies()
     const role = cookieStore.get("role").value
     const userId = cookieStore.get("userId").value
-    const user = await getUsersById()
-    console.log(user);
+    const trainers = await getAllTrainers()
     
     return role !== "admin" ?(
         <>
@@ -21,7 +20,7 @@ export default async function page() {
     ) : (
         <>
         <main>
-        <CreateClassForm userId={userId} userFirstName={user.userFirstName} userLastName={user.userLastName}/>
+        <CreateClassForm userId={userId} trainers={trainers}/>
         </main>
         </>
     )

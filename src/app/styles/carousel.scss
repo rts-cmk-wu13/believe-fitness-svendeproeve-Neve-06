@@ -1,3 +1,6 @@
+@use "./colors";
+
+
 .embla__viewport {
   overflow: hidden;
 }
@@ -24,12 +27,11 @@
   margin-inline: 2rem;
 }
 
-// .embla__button{
-//   border: solid 1px colors.$white-color;
-//   padding: 1rem;
-//   border-radius: 50%;
-//   background-color: colors.$secondary-background-color;
-// }
+.embla__button{
+  border: solid 1px colors.$white-color;
+  padding: 1rem;
+  border-radius: 50%;
+}
 
 .embla__container-title {
   padding-top: 1rem;
@@ -48,7 +50,7 @@
   bottom: 0;
   padding-top: 2rem;
   width: 60%;
-  background: yellow;
+  background: colors.$yellow-color;
   border-top-right-radius: 4rem;
   padding-bottom: 1rem;
 }

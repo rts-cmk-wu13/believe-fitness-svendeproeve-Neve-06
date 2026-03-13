@@ -27,7 +27,7 @@ export default function ClassCard({ classData, isUserEnrolled, userId, token }) 
     return (
         <article>
             <figure className="classCard__image-figure full-width classCard__figure-wrap">
-                <img src={classData.asset.url} alt={classData.name} />
+                <img src={classData.asset?.url} alt={classData.name} />
             <h1 className="classCard__overlay-title">
                 {classData.className}
             </h1>

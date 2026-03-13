@@ -2,6 +2,7 @@
 import React from "react"
 import useEmblaCarousel from "embla-carousel-react"
 import Autoplay from "embla-carousel-autoplay"
+import Image from "next/image"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 
@@ -20,7 +21,6 @@ export default function Testimonials({ testimonials = [] }) {
                 <h2 className="embla__container-title">A word from other believers</h2>
                 <div className="embla__viewport" ref={emblaRef}>
                     <div className="embla__container">
-
                         {testimonials.map((testimonial) => (
                             <article className="embla__slide" key={testimonial.id}>
                                 <p>{testimonial.text}</p>
