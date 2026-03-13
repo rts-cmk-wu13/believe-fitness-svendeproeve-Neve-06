@@ -1,0 +1,21 @@
+@use "./colors";
+
+@media (max-width: 64rem){
+    .classCard__image-figure.full-width {
+        height: 100vw;
+        margin-inline: calc(50% - 50vw);
+    }
+}
+
+.classCard__figure-wrap{
+    position: relative;
+}
+
+.classCard__overlay-title {
+  position: absolute;
+  right:30%;
+  bottom: 1rem;
+  left: 1rem;
+  color: colors.$yellow-color;
+  z-index: 2;
+}

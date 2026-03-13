@@ -1,21 +1,11 @@
-# Svendeprøve, WU13
-Alexander Neve, WU13
 
-Valgfri opgave C
+"use client"
+import { useRouter } from "next/navigation"
+export default function ClassCard({ classData, isUserEnrolled, userId, token }) {
 
-## Tech Stack
+    const router = useRouter()
 
-Next.Js - Next.js er et framework som har server-side rendering og statisk rendering. 
-Sass - Sass er et styling syntax
-Embla Carousel - Embla Carousel er et carousel library,  som er designet til moderne web applikationer. 
-
-
-## Code Eksempel
-
-Det her er function til at melde og framelde fra classes some en user. 
-
-```
-  const handleLeave = async () => {
+    const handleLeave = async () => {
         await fetch(`http://localhost:4000/api/v1/users/${userId}/classes/${classData.id}`, {
             method: "DELETE",
             headers: {
@@ -34,6 +24,20 @@ Det her er function til at melde og framelde fra classes some en user.
         router.refresh()
     }
 
+    return (
+        <article>
+            <figure className="classCard__image-figure full-width classCard__figure-wrap">
+                <img src={classData.asset?.url} alt={classData.name} />
+            <h1 className="classCard__overlay-title">
+                {classData.className}
+            </h1>
+            </figure>
+            <p>{classData.classDay} {classData.classTime}</p>
+            <p>{classData.classDescription}</p>
+            <h3>Trainer Name</h3>
+            <h3>
+                {classData.trainer.trainerName}
+            </h3>
             {isUserEnrolled ? (
                 <button className="login__button " onClick={handleLeave}>
                     Leave
@@ -43,11 +47,6 @@ Det her er function til at melde og framelde fra classes some en user.
                     Sign up
                 </button>
             )}
-```
-
-
-## Perspektivering
-
-Jeg synes at opgaven til at starte med, var nemere end terminsprøven, indtil Torsdags hvor jeg brugte hele dagen på at få Opret classes til at virke. Jeg ved stadig ikke helt hvordan det virker, eller mere, hvordan jeg fik den til bare at virke. 
-
-Jeg synes at siden ikke er mit bedste arbejde, men jeg synes heller ikke projektet gik dårligt heller. 
+        </article>
+    )
+}

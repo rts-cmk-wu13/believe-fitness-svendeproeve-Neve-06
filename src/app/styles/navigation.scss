@@ -1,0 +1,22 @@
+.dialog__container {
+    width: 100%;
+    text-align: center;
+    margin-inline: auto;
+    height: 100%;
+}
+
+.dialog__container li {
+
+    padding-block: 1rem;
+}
+
+dialog {
+    border: none;
+    height: 100%;
+}
+
+.nav__button{
+    position: absolute;
+    z-index: 1;
+    right: 0
+}
